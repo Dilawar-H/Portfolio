@@ -1,0 +1,186 @@
+/* style.css */
+:root {
+    --bg-coffee: #161413;
+    --cup-color: #ffffff;
+    --accent-gold: #c5a880;
+    --text-light: #f5f5f7;
+    --text-dark: #8c8581;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-coffee);
+    color: var(--text-light);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow-x: hidden;
+}
+
+.coffee-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* --- COFFEE & STEAM ENGINE (PURE CSS SHAPES) --- */
+.visual-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.coffee-cup {
+    width: 100px;
+    height: 80px;
+    background-color: var(--cup-color);
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    position: relative;
+    box-shadow: inset -10px 0px 0px rgba(0,0,0,0.05), 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.cup-handle {
+    width: 30px;
+    height: 45px;
+    border: 8px solid var(--cup-color);
+    border-left: none;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: absolute;
+    right: -28px;
+    top: 15px;
+}
+
+.cup-saucer {
+    width: 140px;
+    height: 10px;
+    background-color: var(--cup-color);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-top: 8px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+/* Steam Mechanics */
+.steam-container {
+    position: absolute;
+    top: -50px;
+    left: 15px;
+    width: 70px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.steam-line {
+    width: 4px;
+    height: 40px;
+    background: linear-gradient(to top, var(--accent-gold), transparent);
+    border-radius: 2px;
+    filter: blur(1px);
+}
+
+.steam-line:nth-child(1) { animation: floatSteam 3s infinite linear; }
+.steam-line:nth-child(2) { animation: floatSteam 2.5s infinite linear; animation-delay: 0.5s; }
+.steam-line:nth-child(3) { animation: floatSteam 3.5s infinite linear; animation-delay: 0.2s; }
+
+/* Content Section Typography */
+.content-container {
+    text-align: center;
+    width: 100%;
+}
+
+.badge-server {
+    display: inline-block;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    padding: 4px 14px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.heading {
+    font-size: clamp(1.6rem, 5vw, 2.5rem);
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+.description {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 460px;
+    margin: 0 auto 30px;
+}
+
+/* Elegant Animated Progress Bar */
+.progress-bar-container {
+    width: 100%;
+    max-width: 250px;
+    height: 3px;
+    background-color: rgba(255,255,255,0.05);
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 40%;
+    height: 100%;
+    background-color: var(--accent-gold);
+    border-radius: 10px;
+    animation: loadingMove 2s infinite ease-in-out;
+}
+
+/* --- HIGH-END ANIMATION KEYFRAMES --- */
+@keyframes floatSteam {
+    0% { transform: translateY(10px) scaleY(0.5) skewX(0deg); opacity: 0; }
+    50% { transform: translateY(-10px) scaleY(1) skewX(10deg); opacity: 0.6; }
+    100% { transform: translateY(-30px) scaleY(1.5) skewX(-10deg); opacity: 0; }
+}
+
+@keyframes loadingMove {
+    0% { transform: translateX(-150%); }
+    50% { transform: translateX(150%); }
+    100% { transform: translateX(-150%); }
+}
+
+/* --- TABLET & DESKTOP RESPONSIVENESS --- */
+@media (min-width: 768px) {
+    .coffee-wrapper {
+        flex-direction: row;
+        text-align: left;
+        gap: 70px;
+    }
+    .visual-container {
+        width: 240px;
+        height: 240px;
+    }
+    .coffee-cup { width: 130px; height: 100px; border-bottom-left-radius: 55px; border-bottom-right-radius: 55px; }
+    .cup-handle { width: 35px; height: 55px; right: -33px; top: 20px; }
+    .cup-saucer { width: 180px; height: 12px; }
+    .steam-container { top: -60px; left: 25px; width: 80px; }
+    .content-container { text-align: left; }
+    .description { margin: 0 0 30px 0; }
+    .progress-bar-container { margin: 0; }
+}

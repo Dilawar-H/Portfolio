@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dilawar H. | Master Deployment Catalog</title>
+    <style>
+        /* CSS HACKS: Zero-dependency reset and high-performance layout */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #021C1E;
+            color: #6FB98F;
+            padding: 3rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 4rem;
+            border-bottom: 1px solid #004445;
+            padding-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            color: #FFFFFF;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #6FB98F;
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
+
+        .meta-specs {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .spec-tag {
+            background-color: #004445;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            color: #FFFFFF;
+        }
+
+        /* Category Grid System */
+        .category-section {
+            margin-bottom: 3.5rem;
+        }
+
+        .category-title {
+            font-size: 1.25rem;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .category-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background-color: #004445;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Component Cards - Stripe Aesthetic */
+        .card {
+            background-color: #004445;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: #2C7873;
+        }
+
+        .card-meta {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #2C7873;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .card-title {
+            color: #FFFFFF;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #6FB98F;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            color: #FFFFFF;
+            background-color: #2C7873;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-align: center;
+            transition: background-color 0.2s ease;
+        }
+
+        .card-link:hover {
+            background-color: #1f5854;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            body { padding: 1.5rem 1rem; }
+            header { margin-bottom: 2.5rem; }
+            header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Dilawar H.</h1>
+            <p>Production-Grade Web Assets & Architecture Blueprints</p>
+            <div class="meta-specs">
+                <div class="spec-tag">0% Plugins</div>
+                <div class="spec-tag">Core Web Vitals Optimized</div>
+                <div class="spec-tag">Clean Architecture</div>
+            </div>
+        </header>
+
+        <main>
+            <!-- CATEGORY: 404 INTERFACES -->
+            <section class="category-section">
+                <div class="category-title">404 Error Interfaces</div>
+                <div class="grid">
+                    <div class="card">
+                        <div>
+                            <div class="card-meta">Vanilla UI</div>
+                            <div class="card-title">Cyberpunk Glitch</div>
+                            <div class="card-desc">High-impact glitch state animations using pure CSS keyframes. Zero scripts.</div>
+                        </div>
+                        <a href="template-404-pages/cyberpunk-glitch/" class="card-link">Launch Interface →</a>
+                    </div>
+                    <div class="card">
+                        <div>
+                            <div class="card-meta">Vanilla UI</div>
+                            <div class="card-title">Floating Astronaut</div>
+                            <div class="card-desc">Pure CSS parallax float effect mimicking canvas physics without heavy libraries.</div>
+                        </div>
+                        <a href="template-404-pages/floating-astronaut/" class="card-link">Launch Interface →</a>
+                    </div>
+                    <div class="card">
+                        <div>
+                            <div class="card-meta">Vanilla UI</div>
+                            <div class="card-title">Noor Glow</div>
+                            <div class="card-desc">Clean, aesthetic neon glow UI featuring localized structural assets.</div>
+                        </div>
+                        <a href="template-404-pages/noor-glow/" class="card-link">Launch Interface →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CATEGORY: CONVERSION ENGINES (COMING SOON) -->
+            <section class="category-section">
+                <div class="category-title">Coming Soon Engines</div>
+                <div class="grid">
+                    <div class="card">
+                        <div>
+                            <div class="card-meta">Async JS</div>
+                            <div class="card-title">Cyberpunk Neon Glow</div>
+                            <div class="card-desc">Dynamic timing system integrated with a neon glassmorphic core engine.</div>
+                        </div>
+                        <a href="template-coming-soon-pages/cyberpunk-neon-glow/" class="card-link">Launch Interface →</a>
+                    </div>
+                    <div class="card">
+                        <div>
+                            <div class="card-meta">Async JS</div>
+                            <div class="card-title">Glassmorphism Timer</div>
+                            <div class="card-desc">Ultra-lightweight microsecond accurate countdown module with background masking.</div>
+                        </div>
+                        <a href="template-coming-soon-pages/glassmorphic-timer/" class="card-link">Launch Interface →</a>
+                    </div>
+                    <div class="card">
+                        <div>
+                            <div class="card-meta">Vanilla UI</div>
+                            <div class="card-title">Skyline Properties</div>
+                            <div class="card-desc">Corporate real-estate placeholder frame featuring optimized asynchronous assets.</div>
+                        </div>
+                        <a href="template-coming-soon-pages/skyline-properties/" class="card-link">Launch Interface →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CATEGORY: LEAD CAPTURE FORMS -->
+            <section class="category-section">
+                <div class="category-title">Lead Capture Systems</div>
+                <div class="grid">
+                    <div class="card">
+                        <div>
+                            <div class="card-meta">UX Forms</div>
+                            <div class="card-title">Minimalist Float-Label</div>
+                            <div class="card-desc">High-conversion input nodes utilizing pure CSS transitions for floating labels.</div>
+                        </div>
+                        <a href="template-contact-forms/minimalist-float-label/" class="card-link">Launch Interface →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CATEGORY: MAINTENANCE STATES -->
+            <section class="category-section">
+                <div class="category-title">Maintenance System States</div>
+                <div class="grid">
+                    <div class="card">
+                        <div>
+                            <div class="card-meta">CSS Mechanics</div>
+                            <div class="card-title">Minimalist Coffee Steam</div>
+                            <div class="card-desc">Atmospheric SVG manipulation and fluid dynamic emulation using vanilla styling.</div>
+                        </div>
+                        <a href="template-maintenance-pages/minimalist-coffee-steam/" class="card-link">Launch Interface →</a>
+                    </div>
+                    <div class="card">
+                        <div>
+                            <div class="card-meta">CSS Mechanics</div>
+                            <div class="card-title">Pulsing Gears</div>
+                            <div class="card-desc">Industrial rotation engines calculated natively via inline timing loops.</div>
+                        </div>
+                        <a href="template-maintenance-pages/pulsing-gears/" class="card-link">Launch Interface →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CATEGORY: INTERNATIONALIZATION (RTL) -->
+            <section class="category-section">
+                <div class="category-title">RTL Architecture Engines</div>
+                <div class="grid">
+                    <div class="card">
+                        <div>
+                            <div class="card-meta">Bi-Directional</div>
+                            <div class="card-title">Roznama Pakistan</div>
+                            <div class="card-desc">Native right-to-left layout grid handling structured data pipelines seamlessly.</div>
+                        </div>
+                        <a href="template-rtl-sites/roznama-pakistan/" class="card-link">Launch Interface →</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

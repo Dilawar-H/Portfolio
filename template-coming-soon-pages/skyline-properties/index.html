@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coming Soon — Skyline Properties</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- BACKGROUND IMAGE -->
+  <!--
+    AI IMAGE PROMPT (Leonardo.ai / Adobe Firefly):
+    "Luxury high-rise residential apartment building exterior,
+    modern architecture, glass facade, golden sunset lighting,
+    Karachi or Lahore Pakistan cityscape in background,
+    dramatic sky with warm tones, professional real estate photography,
+    wide angle, photorealistic"
+  -->
+  <div class="bg-overlay"></div>
+  <!-- Replace .bg-overlay background-image in CSS with your AI image -->
+
+  <!-- CONTENT WRAPPER -->
+  <div class="wrapper">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="logo">
+        <span class="logo-mark">◈</span>
+        Skyline <span>Properties</span>
+      </div>
+      <div class="contact-pill">
+        <span>📞</span> +92 300 1234567
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <div class="tag-line">
+        <span class="line-dec"></span>
+        Premium Living — Karachi
+        <span class="line-dec"></span>
+      </div>
+
+      <h1 class="heading">
+        Something <em>Extraordinary</em><br>
+        Is Coming.
+      </h1>
+
+      <p class="subtext">
+        We are putting the finishing touches on our new collection
+        of luxury residences in the heart of DHA Phase 8.
+        Be the first to explore.
+      </p>
+
+      <!-- COUNTDOWN TIMER -->
+      <div class="countdown" id="countdown">
+        <div class="time-block">
+          <span class="time-num" id="days">00</span>
+          <span class="time-label">Days</span>
+        </div>
+        <span class="colon">:</span>
+        <div class="time-block">
+          <span class="time-num" id="hours">00</span>
+          <span class="time-label">Hours</span>
+        </div>
+        <span class="colon">:</span>
+        <div class="time-block">
+          <span class="time-num" id="minutes">00</span>
+          <span class="time-label">Minutes</span>
+        </div>
+        <span class="colon">:</span>
+        <div class="time-block">
+          <span class="time-num" id="seconds">00</span>
+          <span class="time-label">Seconds</span>
+        </div>
+      </div>
+
+      <!-- EMAIL FORM -->
+      <div class="notify-wrap">
+        <p class="notify-label">Get notified when we launch</p>
+        <div class="email-form">
+          <input
+            type="email"
+            class="email-input"
+            placeholder="Enter your email address"
+            id="emailInput"
+          />
+          <button class="notify-btn" onclick="handleNotify()">
+            Notify Me
+          </button>
+        </div>
+        <p class="privacy-note">✦ No spam. We respect your privacy.</p>
+        <div class="success-msg" id="successMsg">
+          ✓ You're on the list! We'll be in touch soon.
+        </div>
+      </div>
+
+      <!-- FEATURES -->
+      <div class="features">
+        <div class="feature">
+          <span class="feat-icon">◈</span>
+          <span>Luxury Apartments</span>
+        </div>
+        <div class="feat-divider"></div>
+        <div class="feature">
+          <span class="feat-icon">◈</span>
+          <span>Prime Location</span>
+        </div>
+        <div class="feat-divider"></div>
+        <div class="feature">
+          <span class="feat-icon">◈</span>
+          <span>Easy Installments</span>
+        </div>
+        <div class="feat-divider"></div>
+        <div class="feature">
+          <span class="feat-icon">◈</span>
+          <span>RERA Approved</span>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="social-links">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+      </div>
+      <p class="copy">© 2025 Skyline Properties. All rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // ===== COUNTDOWN TIMER =====
+    const launchDate = new Date('2026-12-01T00:00:00');
+
+    function updateCountdown() {
+      const now  = new Date();
+      const diff = launchDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML =
+          '<p class="launched">We Are Live!</p>';
+        return;
+      }
+
+      const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent    = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent   = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ===== EMAIL FORM =====
+    function handleNotify() {
+      const email = document.getElementById('emailInput').value;
+      const msg   = document.getElementById('successMsg');
+
+      if (!email || !email.includes('@')) {
+        document.getElementById('emailInput').style.borderColor = '#e74c3c';
+        return;
+      }
+
+      document.getElementById('emailInput').style.borderColor = '';
+      document.getElementById('emailInput').value = '';
+      msg.classList.add('show');
+
+      setTimeout(() => msg.classList.remove('show'), 4000);
+    }
+  </script>
+
+</body>
+</html>

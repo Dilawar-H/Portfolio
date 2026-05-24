@@ -1,0 +1,201 @@
+/* style.css */
+:root {
+    --bg-terminal: #0a0a0c;
+    --matrix-green: #00ff66;
+    --cyber-pink: #ff0055;
+    --cyber-cyan: #00f0ff;
+    --text-white: #ffffff;
+    --text-muted: #6b6b7c;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-terminal);
+    color: var(--text-white);
+    font-family: 'Courier New', Courier, monospace; /* Hardcore tech feel */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background Subtle Grid Layer (CSS Hack instead of image) */
+body::before {
+    content: " ";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 6px 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.glitch-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    z-index: 2;
+}
+
+/* --- THE GLITCH ENGINE --- */
+.visual-container {
+    position: relative;
+}
+
+.glitch-code {
+    font-size: clamp(6rem, 20vw, 11rem);
+    font-weight: 900;
+    position: relative;
+    color: var(--text-white);
+    letter-spacing: -5px;
+    animation: textGlitch 3s linear infinite;
+}
+
+/* Pseudo layers for RGB Splitting effect */
+.glitch-code::before,
+.glitch-code::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-terminal);
+}
+
+.glitch-code::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--cyber-pink);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitchLayer1 5s infinite linear alternate-reverse;
+}
+
+.glitch-code::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--cyber-cyan), 0 2px var(--cyber-pink);
+    clip: rect(85px, 450px, 140px, 0);
+    animation: glitchLayer2 2s infinite linear alternate-reverse;
+}
+
+/* Content & Interface Typography */
+.content-container {
+    text-align: center;
+}
+
+.terminal-badge {
+    display: inline-block;
+    background-color: rgba(255, 0, 85, 0.1);
+    border: 1px solid var(--cyber-pink);
+    color: var(--cyber-pink);
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.error-heading {
+    font-size: clamp(1.1rem, 4vw, 1.8rem);
+    font-weight: bold;
+    color: var(--cyber-cyan);
+    margin-bottom: 12px;
+}
+
+.error-text {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto 30px;
+}
+
+/* Cyberpunk Interactive Buttons */
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn-cyber, .btn-cyber-secondary {
+    padding: 10px 24px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.btn-cyber {
+    background-color: var(--cyber-cyan);
+    color: var(--bg-terminal);
+    border: 1px solid var(--cyber-cyan);
+    box-shadow: 3px 3px 0px var(--cyber-pink);
+}
+
+.btn-cyber:hover {
+    box-shadow: 0px 0px 0px var(--cyber-pink);
+    transform: translate(3px, 3px);
+}
+
+.btn-cyber-secondary {
+    background-color: transparent;
+    color: var(--text-white);
+    border: 1px solid var(--text-muted);
+}
+
+.btn-cyber-secondary:hover {
+    border-color: var(--cyber-cyan);
+    color: var(--cyber-cyan);
+}
+
+/* --- ANIMATION KEYFRAMES --- */
+@keyframes textGlitch {
+    0%, 95%, 100% { transform: skew(0deg); }
+    96% { transform: skew(10deg); }
+    97% { transform: skew(-10deg); }
+    98% { transform: skew(5deg); }
+    99% { transform: skew(-3deg); }
+}
+
+@keyframes glitchLayer1 {
+    0% { clip: rect(20px, 9999px, 66px, 0); }
+    10% { clip: rect(132px, 9999px, 150px, 0); }
+    20% { clip: rect(30px, 9999px, 5px, 0); }
+    /* ... randomizing steps smoothly ... */
+    100% { clip: rect(90px, 9999px, 110px, 0); }
+}
+
+@keyframes glitchLayer2 {
+    0% { clip: rect(80px, 9999px, 100px, 0); }
+    50% { clip: rect(10px, 9999px, 45px, 0); }
+    100% { clip: rect(120px, 9999px, 135px, 0); }
+}
+
+/* --- TABLET & DESKTOP RESPONSIVENESS --- */
+@media (min-width: 768px) {
+    .glitch-wrapper {
+        flex-direction: row;
+        text-align: left;
+        gap: 60px;
+    }
+    .content-container {
+        text-align: left;
+    }
+    .error-text {
+        margin: 0 0 30px 0;
+    }
+    .nav-links {
+        justify-content: flex-start;
+    }
+}

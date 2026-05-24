@@ -1,0 +1,175 @@
+/* style.css */
+:root {
+    --bg-dark: #070714;
+    --text-light: #ffffff;
+    --text-muted: #8a8a9e;
+    --accent-blue: #00d2ff;
+    --planet-color: #ff6b6b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.space-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1100px;
+    width: 100%;
+}
+
+/* --- CSS HACK: Dynamic Visual Section --- */
+.visual-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Planet auto-rotate karega taake craters sath ghumain */
+.planet {
+    width: 140px;
+    height: 140px;
+    background: var(--planet-color);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: inset -20px -20px 0px rgba(0,0,0,0.2), 0 0 30px rgba(255,107,107,0.4);
+    overflow: hidden;
+    animation: rotatePlanet 20s linear infinite; /* Smooth slow rotation */
+}
+
+/* Craters permanent fixed hain planet me, planet ghumega to ye bhi ghumenge */
+.crater {
+    position: absolute;
+    background: rgba(0,0,0,0.15);
+    border-radius: 50%;
+}
+.crater:nth-child(1) { width: 30px; height: 30px; top: 20px; left: 30px; }
+.crater:nth-child(2) { width: 20px; height: 20px; bottom: 30px; right: 40px; }
+.crater:nth-child(3) { width: 15px; height: 15px; top: 70px; left: 80px; }
+
+/* Anti-Clockwise Rocket with Natural Tangent Alignment */
+.rocket {
+    position: absolute;
+    font-size: 3rem;
+    /* -45deg initial tilt hai taake emoji ka face flight path ke mutabiq adjust ho */
+    transform: rotate(0deg) translate(100px) rotate(-45deg);
+    animation: orbitRocketAnti 6s linear infinite;
+}
+
+/* Content Styling */
+.content-container {
+    text-align: center;
+}
+
+.error-code {
+    font-size: clamp(5rem, 15vw, 8rem);
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(180deg, #fff 30%, var(--accent-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.error-heading {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    font-weight: 500;
+    margin: 15px 0 10px;
+}
+
+.error-text {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    max-width: 400px;
+    margin: 0 auto 30px;
+    line-height: 1.5;
+}
+
+.btn-earth {
+    display: inline-block;
+    padding: 12px 32px;
+    color: var(--accent-blue);
+    border: 2px solid var(--accent-blue);
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-earth:hover {
+    background-color: var(--accent-blue);
+    color: var(--bg-dark);
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.5);
+}
+
+/* --- ANIMATION KEYFRAMES (MOBILE) --- */
+
+/* Planet ki slow continuous rotation */
+@keyframes rotatePlanet {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); } /* Crates bhi anti-clockwise halkay se ghumenge */
+}
+
+/* Rocket Natural Anti-Clockwise Orbit */
+@keyframes orbitRocketAnti {
+    0% {
+        transform: rotate(360deg) translate(100px) rotate(-45deg);
+    }
+    100% {
+        transform: rotate(0deg) translate(100px) rotate(-45deg);
+    }
+}
+
+/* --- RESPONSIVENESS (TABLET/DESKTOP) --- */
+@media (min-width: 768px) {
+    .space-wrapper {
+        flex-direction: row;
+        text-align: left;
+        gap: 80px;
+    }
+    .visual-container {
+        width: 300px;
+        height: 300px;
+    }
+    .planet {
+        width: 200px;
+        height: 200px;
+    }
+
+    /* Badi screen ke radius (140px) ke sath flight path */
+    @keyframes orbitRocketAnti {
+        0% {
+            transform: rotate(360deg) translate(140px) rotate(-45deg);
+        }
+        100% {
+            transform: rotate(0deg) translate(140px) rotate(-45deg);
+        }
+    }
+    .content-container {
+        text-align: left;
+    }
+    .error-text {
+        margin: 0 0 30px 0;
+    }
+}

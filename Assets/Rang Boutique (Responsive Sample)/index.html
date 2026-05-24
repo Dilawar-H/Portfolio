@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Fix Demo — Rang Boutique | Dilawar H.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- PORTFOLIO HEADER -->
+  <header class="portfolio-header">
+    <div class="portfolio-brand">
+      <span class="dot"></span>
+      Dilawar H. <span>— Responsive Web Developer</span>
+    </div>
+    <div class="portfolio-tag">Case Study: Rang Boutique</div>
+  </header>
+
+  <!-- CASE STUDY INTRO -->
+  <section class="intro">
+    <p class="intro-label">Project</p>
+    <h1 class="intro-title">
+      From Broken to Beautiful —<br>
+      <em>A Mobile Responsive Fix</em>
+    </h1>
+    <p class="intro-sub">
+      Rang Boutique had a stunning desktop website but it was 
+      completely broken on mobile. 73% of their traffic was 
+      mobile users — they were losing sales every day.
+      I fixed it with clean CSS — no plugins, no page builder.
+    </p>
+
+    <!-- STATS ROW -->
+    <div class="stats-row">
+      <div class="stat">
+        <span class="stat-num">73%</span>
+        <span class="stat-label">Mobile Traffic Lost</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Days to Fix</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Pure CSS Only</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <span class="stat-num">0</span>
+        <span class="stat-label">Plugins Added</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER PHONES -->
+  <section class="comparison">
+
+    <!-- BEFORE PHONE -->
+    <div class="phone-wrap">
+      <div class="phone-label before-label">
+        <span class="label-dot red"></span>
+        Before — Broken on Mobile
+      </div>
+
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen broken-screen">
+
+          <!-- BROKEN SITE -->
+          <div class="broken-site">
+
+            <!-- Broken Nav — overflows -->
+            <div class="b-nav">
+              <span class="b-logo">Rang Boutique</span>
+              <div class="b-navlinks">
+                <span>Home</span>
+                <span>Shop</span>
+                <span>About</span>
+                <span>Contact</span>
+              </div>
+            </div>
+
+            <!-- Broken Hero — text overflows image -->
+            <div class="b-hero">
+              <!--
+                AI IMAGE PROMPT:
+                "Pakistani woman in colorful embroidered dress,
+                boutique clothing store background, fashion photography,
+                warm indoor lighting, photorealistic"
+              -->
+              <div class="b-hero-img"></div>
+              <div class="b-hero-text">
+                <p class="b-hero-title">New Arrivals This Eid</p>
+                <p class="b-hero-sub">Shop the latest collection from Rang Boutique</p>
+                <button class="b-btn">Shop Now</button>
+              </div>
+            </div>
+
+            <!-- Broken Grid — 4 col on mobile -->
+            <div class="b-section-title">Our Collection</div>
+            <div class="b-grid">
+              <div class="b-card">
+                <div class="b-card-img pink"></div>
+                <p class="b-card-name">Lawn Suit</p>
+                <p class="b-card-price">Rs. 3,500</p>
+              </div>
+              <div class="b-card">
+                <div class="b-card-img rose"></div>
+                <p class="b-card-name">Chiffon Set</p>
+                <p class="b-card-price">Rs. 5,200</p>
+              </div>
+              <div class="b-card">
+                <div class="b-card-img peach"></div>
+                <p class="b-card-name">Bridal Wear</p>
+                <p class="b-card-price">Rs. 12,000</p>
+              </div>
+              <div class="b-card">
+                <div class="b-card-img mauve"></div>
+                <p class="b-card-name">Casual Set</p>
+                <p class="b-card-price">Rs. 2,800</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ISSUE TAGS -->
+      <div class="issues">
+        <div class="issue-tag">❌ Nav overflows screen</div>
+        <div class="issue-tag">❌ Text overlaps image</div>
+        <div class="issue-tag">❌ 4-col grid on mobile</div>
+        <div class="issue-tag">❌ Tiny unreadable text</div>
+        <div class="issue-tag">❌ Button cuts off</div>
+      </div>
+    </div>
+
+    <!-- VS DIVIDER -->
+    <div class="vs-wrap">
+      <div class="vs-line"></div>
+      <div class="vs-badge">VS</div>
+      <div class="vs-line"></div>
+    </div>
+
+    <!-- AFTER PHONE -->
+    <div class="phone-wrap">
+      <div class="phone-label after-label">
+        <span class="label-dot green"></span>
+        After — Fixed & Responsive
+      </div>
+
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen fixed-screen">
+
+          <!-- FIXED SITE -->
+          <div class="fixed-site">
+
+            <!-- Fixed Nav — hamburger -->
+            <div class="f-nav">
+              <span class="f-logo">Rang</span>
+              <div class="f-hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <!-- Fixed Hero — stacked -->
+            <div class="f-hero">
+              <div class="f-hero-img"></div>
+              <div class="f-hero-text">
+                <p class="f-badge">New Arrivals</p>
+                <p class="f-hero-title">Eid Collection 2025</p>
+                <button class="f-btn">Shop Now →</button>
+              </div>
+            </div>
+
+            <!-- Fixed Grid — 2 col -->
+            <div class="f-section-title">Collection</div>
+            <div class="f-grid">
+              <div class="f-card">
+                <div class="f-card-img pink"></div>
+                <p class="f-card-name">Lawn Suit</p>
+                <p class="f-card-price">Rs. 3,500</p>
+              </div>
+              <div class="f-card">
+                <div class="f-card-img rose"></div>
+                <p class="f-card-name">Chiffon Set</p>
+                <p class="f-card-price">Rs. 5,200</p>
+              </div>
+              <div class="f-card">
+                <div class="f-card-img peach"></div>
+                <p class="f-card-name">Bridal Wear</p>
+                <p class="f-card-price">Rs. 12,000</p>
+              </div>
+              <div class="f-card">
+                <div class="f-card-img mauve"></div>
+                <p class="f-card-name">Casual Set</p>
+                <p class="f-card-price">Rs. 2,800</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- FIX TAGS -->
+      <div class="issues">
+        <div class="fix-tag">✅ Hamburger menu added</div>
+        <div class="fix-tag">✅ Hero stacked cleanly</div>
+        <div class="fix-tag">✅ 2-col grid on mobile</div>
+        <div class="fix-tag">✅ Readable font sizes</div>
+        <div class="fix-tag">✅ Full-width buttons</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CODE SNIPPET -->
+  <section class="code-section">
+    <h3 class="code-title">The Fix — Pure CSS Media Queries</h3>
+    <div class="code-block">
+      <pre><code><span class="c-comment">/* Mobile Navigation Fix */</span>
+<span class="c-selector">.nav-links</span> {
+  <span class="c-prop">display</span>: <span class="c-val">flex</span>;
+  <span class="c-prop">gap</span>: <span class="c-val">1.5rem</span>;
+}
+
+<span class="c-at">@media</span> (max-width: <span class="c-val">768px</span>) {
+  <span class="c-selector">.nav-links</span> {
+    <span class="c-prop">display</span>: <span class="c-val">none</span>; <span class="c-comment">/* hidden on mobile */</span>
+  }
+  <span class="c-selector">.hamburger</span> {
+    <span class="c-prop">display</span>: <span class="c-val">block</span>;
+  }
+
+  <span class="c-comment">/* Grid: 4 col → 2 col */</span>
+  <span class="c-selector">.product-grid</span> {
+    <span class="c-prop">grid-template-columns</span>: <span class="c-val">repeat(2, 1fr)</span>;
+  }
+
+  <span class="c-comment">/* Hero: side-by-side → stacked */</span>
+  <span class="c-selector">.hero</span> {
+    <span class="c-prop">flex-direction</span>: <span class="c-val">column</span>;
+  }
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h3>Is your website broken on mobile?</h3>
+    <p>I fix responsive layout issues using clean CSS — no plugins, no page builders.</p>
+    <a href="https://fiverr.com" class="cta-btn" target="_blank">
+      Hire Me on Fiverr →
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span>Dilawar H. — Responsive Web Developer</span>
+    <span>@pixbit</span>
+  </footer>
+
+</body>
+</html>

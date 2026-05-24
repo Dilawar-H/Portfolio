@@ -1,0 +1,11 @@
+# Ignore the local assets backup folder
+assets/
+
+# KDE Neon / Linux OS temporary files
+.directory
+.DS_Store
+Thumbs.db
+
+# Developer Environment Logs
+*.log
+.vscode/

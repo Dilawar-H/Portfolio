@@ -1,0 +1,171 @@
+/* style.css */
+:root {
+    --bg-maintenance: #0f111a;
+    --gear-color: #3a3f58;
+    --gear-accent: #ff9f43;
+    --text-main: #f8f9fa;
+    --text-muted: #676e8b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-maintenance);
+    color: var(--text-main);
+    font-family: system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow-x: hidden;
+}
+
+.maintenance-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    width: 100%;
+    max-width: 960px;
+}
+
+/* --- GEAR MECHANICS ENGINE (PURE CSS SHAPES) --- */
+.visual-container {
+    position: relative;
+    width: 200px;
+    height: 180px;
+}
+
+.gear-system {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.gear {
+    background: var(--gear-color);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.gear-core {
+    position: absolute;
+    top: 25%; left: 25%; width: 50%; height: 50%;
+    background: var(--bg-maintenance);
+    border-radius: 50%;
+}
+
+/* Main Gear Component */
+.main-gear {
+    width: 120px; height: 120px;
+    top: 0; left: 10px;
+    animation: spinClockwise 12s linear infinite;
+}
+
+/* Secondary Interlocking Gear */
+.secondary-gear {
+    width: 80px; height: 80px;
+    bottom: 10px; right: 10px;
+    background: var(--gear-accent);
+    animation: spinAntiClockwise 8s linear infinite;
+}
+
+/* Teeth Parameters via Transformations */
+.tooth {
+    position: absolute;
+    background: inherit;
+    top: -8%; left: 38%; width: 24%; height: 116%;
+    border-radius: 4px;
+}
+.tooth:nth-child(2) { transform: rotate(45deg); }
+.tooth:nth-child(3) { transform: rotate(90deg); }
+.tooth:nth-child(4) { transform: rotate(135deg); }
+
+/* Typography & Content Structure */
+.content-container {
+    text-align: center;
+}
+
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 159, 67, 0.1);
+    border: 1px solid rgba(255, 159, 67, 0.2);
+    color: var(--gear-accent);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.pulse-dot {
+    width: 8px; height: 8px;
+    background-color: var(--gear-accent);
+    border-radius: 50%;
+    animation: beaconPulse 1.8s infinite ease-in-out;
+}
+
+.heading {
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+}
+
+.description {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 520px;
+    margin: 0 auto 32px;
+}
+
+.meta-info {
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 20px;
+    color: var(--text-muted);
+}
+
+/* --- MECHANICAL KEYFRAMES --- */
+@keyframes spinClockwise {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spinAntiClockwise {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+@keyframes beaconPulse {
+    0% { transform: scale(0.8); opacity: 0.5; box-shadow: 0 0 0 0 rgba(255,159,67,0.5); }
+    50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 0 8px rgba(255,159,67,0); }
+    100% { transform: scale(0.8); opacity: 0.5; box-shadow: 0 0 0 0 rgba(255,159,67,0); }
+}
+
+/* --- TABLET & DESKTOP SCALE-UP --- */
+@media (min-width: 768px) {
+    .maintenance-wrapper {
+        flex-direction: row;
+        text-align: left;
+        gap: 80px;
+    }
+    .visual-container {
+        width: 320px;
+        height: 260px;
+    }
+    .main-gear { width: 180px; height: 180px; }
+    .secondary-gear { width: 120px; height: 120px; }
+    .content-container { text-align: left; }
+    .description { margin: 0 0 32px 0; }
+}

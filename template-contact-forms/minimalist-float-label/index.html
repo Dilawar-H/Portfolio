@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Contact Architecture</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="form-wrapper">
+        <header class="form-header">
+            <h2>Let's build something epic</h2>
+            <p>Fill out the form below and our team will get back to you within 24 hours.</p>
+        </header>
+
+        <!-- Dynamic Feedback State Containers -->
+        <div id="form-feedback" class="feedback-msg hidden"></div>
+
+        <form id="minimal-contact-form" novalidate autocomplete="off">
+
+            <!-- Full Name Input Group -->
+            <div class="input-group">
+                <input type="text" id="user-name" name="name" required placeholder=" ">
+                <label for="user-name">Full Name</label>
+                <span class="error-text">Please enter your full name</span>
+            </div>
+
+            <!-- Email Input Group -->
+            <div class="input-group">
+                <input type="email" id="user-email" name="email" required placeholder=" ">
+                <label for="user-email">Email Address</label>
+                <span class="error-text">Please enter a valid email address</span>
+            </div>
+
+            <!-- Message Area Group -->
+            <div class="input-group">
+                <textarea id="user-message" name="message" rows="5" required placeholder=" "></textarea>
+                <label for="user-message">Project Brief / Message</label>
+                <span class="error-text">Message cannot be empty (min 10 characters)</span>
+            </div>
+
+            <!-- High-ROI Action Button -->
+            <button type="submit" class="btn-submit-form">
+                <span class="btn-text">Send Message</span>
+                <div class="btn-loader hidden"></div>
+            </button>
+        </form>
+    </main>
+
+    <script src="form-engine.js"></script>
+</body>
+</html>
