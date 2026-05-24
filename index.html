@@ -3,304 +3,500 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dilawar H. | Master Deployment Catalog</title>
+    <title>Dilawar H. — Deployment Catalog</title>
+    <meta name="description" content="Production-grade web components. 0% plugins. Core Web Vitals optimized. RTL/LTR ready.">
+    <meta property="og:title" content="Dilawar H. — Deployment Catalog">
+    <meta property="og:description" content="Production-grade web components. 0% plugins. Clean architecture.">
+    <meta name="theme-color" content="#0A0A0C">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* CSS HACKS: Zero-dependency reset and high-performance layout */
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
+        :root {
+            --bg:           #0A0A0C;
+            --surface:      #111115;
+            --card:         #141418;
+            --border:       #1E1E26;
+            --border-hover: #2E2E3C;
+            --tx-primary:   #F4F3F0;
+            --tx-secondary: #6B6B78;
+            --tx-ghost:     #30303C;
+            --accent:       #CCFF00;
+            --accent-bg:    rgba(204,255,0,0.07);
+            --accent-brd:   rgba(204,255,0,0.18);
+        }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            background-color: #021C1E;
-            color: #6FB98F;
-            padding: 3rem 1.5rem;
-            line-height: 1.6;
+            background: var(--bg);
+            color: var(--tx-primary);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* subtle grid backdrop */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 56px 56px;
+            opacity: 0.28;
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1080px;
             margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
         }
 
+        /* ── HEADER ── */
         header {
-            margin-bottom: 4rem;
-            border-bottom: 1px solid #004445;
-            padding-bottom: 2rem;
+            padding: 5rem 0 4rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 5rem;
+            animation: fadeUp 0.55s ease both;
         }
 
-        header h1 {
-            font-size: 2.2rem;
-            color: #FFFFFF;
-            font-weight: 700;
-            letter-spacing: -0.05em;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            color: #6FB98F;
-            font-size: 1.1rem;
-            opacity: 0.85;
-        }
-
-        .meta-specs {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            font-size: 0.85rem;
+        .eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--accent);
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .spec-tag {
-            background-color: #004445;
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            color: #FFFFFF;
-        }
-
-        /* Category Grid System */
-        .category-section {
-            margin-bottom: 3.5rem;
-        }
-
-        .category-title {
-            font-size: 1.25rem;
-            color: #FFFFFF;
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
+            gap: 0.8rem;
         }
 
-        .category-title::after {
+        .eyebrow::before {
             content: '';
-            flex-grow: 1;
+            display: block;
+            width: 22px;
             height: 1px;
-            background-color: #004445;
+            background: var(--accent);
+            flex-shrink: 0;
         }
 
+        header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            font-weight: 800;
+            color: var(--tx-primary);
+            letter-spacing: -0.04em;
+            line-height: 1.0;
+            margin-bottom: 1.5rem;
+        }
+
+        header h1 .dot { color: var(--accent); }
+
+        .header-desc {
+            font-size: 1rem;
+            color: var(--tx-secondary);
+            max-width: 480px;
+            margin-bottom: 2rem;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            padding: 0.28rem 0.75rem;
+            border-radius: 3px;
+            border: 1px solid var(--border);
+            color: var(--tx-secondary);
+            background: var(--surface);
+        }
+
+        .badge.hi {
+            border-color: var(--accent-brd);
+            color: var(--accent);
+            background: var(--accent-bg);
+        }
+
+        /* ── CATEGORY SECTIONS ── */
+        main { padding-bottom: 6rem; }
+
+        .category-section {
+            margin-bottom: 4rem;
+        }
+
+        .category-section:nth-child(1) { animation: fadeUp 0.5s 0.10s ease both; }
+        .category-section:nth-child(2) { animation: fadeUp 0.5s 0.18s ease both; }
+        .category-section:nth-child(3) { animation: fadeUp 0.5s 0.26s ease both; }
+        .category-section:nth-child(4) { animation: fadeUp 0.5s 0.34s ease both; }
+        .category-section:nth-child(5) { animation: fadeUp 0.5s 0.42s ease both; }
+        .category-section:nth-child(6) { animation: fadeUp 0.5s 0.50s ease both; }
+
+        .cat-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .cat-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--tx-ghost);
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+        }
+
+        .cat-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--tx-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+        }
+
+        .cat-count {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.66rem;
+            color: var(--tx-ghost);
+            margin-left: auto;
+        }
+
+        /* ── CARD GRID ── */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
         }
 
-        /* Component Cards - Stripe Aesthetic */
         .card {
-            background-color: #004445;
-            border: 1px solid transparent;
-            border-radius: 8px;
-            padding: 1.5rem;
+            background: var(--card);
+            padding: 1.75rem;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            position: relative;
+            transition: background 0.2s ease;
         }
 
-        .card:hover {
-            transform: translateY(-2px);
-            border-color: #2C7873;
+        /* top accent bar on hover */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.28s ease;
         }
 
-        .card-meta {
-            font-size: 0.75rem;
+        .card:hover { background: var(--surface); }
+        .card:hover::before { transform: scaleX(1); }
+
+        .card-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--accent);
             text-transform: uppercase;
-            color: #2C7873;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.11em;
+            margin-bottom: 0.85rem;
         }
 
         .card-title {
-            color: #FFFFFF;
+            font-family: 'Syne', sans-serif;
             font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
+            font-weight: 700;
+            color: var(--tx-primary);
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+            margin-bottom: 0.6rem;
         }
 
         .card-desc {
-            font-size: 0.9rem;
-            color: #6FB98F;
-            opacity: 0.8;
-            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--tx-secondary);
+            line-height: 1.6;
             flex-grow: 1;
+            margin-bottom: 1.5rem;
         }
 
         .card-link {
             display: inline-flex;
             align-items: center;
-            color: #FFFFFF;
-            background-color: #2C7873;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
+            gap: 0.45rem;
+            font-size: 0.8rem;
             font-weight: 500;
-            text-align: center;
-            transition: background-color 0.2s ease;
+            color: var(--tx-primary);
+            text-decoration: none;
+            padding: 0.52rem 1rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-hover);
+            transition: border-color 0.2s, color 0.2s, background 0.2s;
+            align-self: flex-start;
+            letter-spacing: 0.01em;
         }
 
         .card-link:hover {
-            background-color: #1f5854;
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-bg);
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 768px) {
-            body { padding: 1.5rem 1rem; }
-            header { margin-bottom: 2.5rem; }
-            header h1 { font-size: 1.8rem; }
+        .card-link svg {
+            width: 11px;
+            height: 11px;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover .card-link svg { transform: translateX(2px); }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2.25rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            animation: fadeUp 0.5s 0.55s ease both;
+        }
+
+        .footer-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--tx-primary);
+        }
+
+        .footer-info {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.67rem;
+            color: var(--tx-ghost);
+            letter-spacing: 0.04em;
+        }
+
+        /* ── ANIMATION ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 640px) {
+            .container { padding: 0 1.25rem; }
+            header { padding: 3rem 0 2.5rem; margin-bottom: 3rem; }
+            .grid { grid-template-columns: 1fr; }
+            footer { flex-direction: column; gap: 0.5rem; }
         }
     </style>
 </head>
 <body>
+<div class="container">
 
-    <div class="container">
-        <header>
-            <h1>Dilawar H.</h1>
-            <p>Production-Grade Web Assets & Architecture Blueprints</p>
-            <div class="meta-specs">
-                <div class="spec-tag">0% Plugins</div>
-                <div class="spec-tag">Core Web Vitals Optimized</div>
-                <div class="spec-tag">Clean Architecture</div>
-            </div>
-        </header>
-
-        <main>
-            <!-- CATEGORY: 404 INTERFACES -->
-            <section class="category-section">
-                <div class="category-title">404 Error Interfaces</div>
-                <div class="grid">
-                    <div class="card">
-                        <div>
-                            <div class="card-meta">Vanilla UI</div>
-                            <div class="card-title">Cyberpunk Glitch</div>
-                            <div class="card-desc">High-impact glitch state animations using pure CSS keyframes. Zero scripts.</div>
-                        </div>
-                        <a href="template-404-pages/cyberpunk-glitch/" class="card-link">Launch Interface →</a>
-                    </div>
-                    <div class="card">
-                        <div>
-                            <div class="card-meta">Vanilla UI</div>
-                            <div class="card-title">Floating Astronaut</div>
-                            <div class="card-desc">Pure CSS parallax float effect mimicking canvas physics without heavy libraries.</div>
-                        </div>
-                        <a href="template-404-pages/floating-astronaut/" class="card-link">Launch Interface →</a>
-                    </div>
-                    <div class="card">
-                        <div>
-                            <div class="card-meta">Vanilla UI</div>
-                            <div class="card-title">Noor Glow</div>
-                            <div class="card-desc">Clean, aesthetic neon glow UI featuring localized structural assets.</div>
-                        </div>
-                        <a href="template-404-pages/noor-glow/" class="card-link">Launch Interface →</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CATEGORY: CONVERSION ENGINES (COMING SOON) -->
-            <section class="category-section">
-                <div class="category-title">Coming Soon Engines</div>
-                <div class="grid">
-                    <div class="card">
-                        <div>
-                            <div class="card-meta">Async JS</div>
-                            <div class="card-title">Cyberpunk Neon Glow</div>
-                            <div class="card-desc">Dynamic timing system integrated with a neon glassmorphic core engine.</div>
-                        </div>
-                        <a href="template-coming-soon-pages/cyberpunk-neon-glow/" class="card-link">Launch Interface →</a>
-                    </div>
-                    <div class="card">
-                        <div>
-                            <div class="card-meta">Async JS</div>
-                            <div class="card-title">Glassmorphism Timer</div>
-                            <div class="card-desc">Ultra-lightweight microsecond accurate countdown module with background masking.</div>
-                        </div>
-                        <a href="template-coming-soon-pages/glassmorphic-timer/" class="card-link">Launch Interface →</a>
-                    </div>
-                    <div class="card">
-                        <div>
-                            <div class="card-meta">Vanilla UI</div>
-                            <div class="card-title">Skyline Properties</div>
-                            <div class="card-desc">Corporate real-estate placeholder frame featuring optimized asynchronous assets.</div>
-                        </div>
-                        <a href="template-coming-soon-pages/skyline-properties/" class="card-link">Launch Interface →</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CATEGORY: LEAD CAPTURE FORMS -->
-            <section class="category-section">
-                <div class="category-title">Lead Capture Systems</div>
-                <div class="grid">
-                    <div class="card">
-                        <div>
-                            <div class="card-meta">UX Forms</div>
-                            <div class="card-title">Minimalist Float-Label</div>
-                            <div class="card-desc">High-conversion input nodes utilizing pure CSS transitions for floating labels.</div>
-                        </div>
-                        <a href="template-contact-forms/minimalist-float-label/" class="card-link">Launch Interface →</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CATEGORY: MAINTENANCE STATES -->
-            <section class="category-section">
-                <div class="category-title">Maintenance System States</div>
-                <div class="grid">
-                    <div class="card">
-                        <div>
-                            <div class="card-meta">CSS Mechanics</div>
-                            <div class="card-title">Minimalist Coffee Steam</div>
-                            <div class="card-desc">Atmospheric SVG manipulation and fluid dynamic emulation using vanilla styling.</div>
-                        </div>
-                        <a href="template-maintenance-pages/minimalist-coffee-steam/" class="card-link">Launch Interface →</a>
-                    </div>
-                    <div class="card">
-                        <div>
-                            <div class="card-meta">CSS Mechanics</div>
-                            <div class="card-title">Pulsing Gears</div>
-                            <div class="card-desc">Industrial rotation engines calculated natively via inline timing loops.</div>
-                        </div>
-                        <a href="template-maintenance-pages/pulsing-gears/" class="card-link">Launch Interface →</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CATEGORY: INTERNATIONALIZATION (RTL) -->
-            <section class="category-section">
-                <div class="category-title">RTL Architecture Engines</div>
-                <div class="grid">
-                    <div class="card">
-                        <div>
-                            <div class="card-meta">Bi-Directional</div>
-                            <div class="card-title">Roznama Pakistan</div>
-                            <div class="card-desc">Native right-to-left layout grid handling structured data pipelines seamlessly.</div>
-                        </div>
-                        <a href="template-rtl-sites/roznama-pakistan/" class="card-link">Launch Interface →</a>
-                    </div>
-                </div>
-            </section>
-
-    </div>
-<!-- CATEGORY: PREMIUM PRICING TABLES -->
-<section class="category-section">
-    <div class="category-title">Conversion Pricing Matrix</div>
-    <div class="grid">
-        <div class="card">
-            <div>
-                <div class="card-meta">Stripe Aesthetic</div>
-                <div class="card-title">Clean Stripe v1</div>
-                <div class="card-desc">Ultra-lightweight, 0% dependency pricing grid. Core Web Vitals optimized with custom CSS vectors.</div>
-            </div>
-            <a href="template-pricing-tables/clean-stripe-v1/" class="card-link">Launch Interface →</a>
+    <header>
+        <p class="eyebrow">Deployment Catalog — v2.0</p>
+        <h1>Dilawar<span class="dot">.</span><br>Hussain</h1>
+        <p class="header-desc">Production-grade web components. Zero plugins. Clean architecture. Core Web Vitals first.</p>
+        <div class="badge-row">
+            <span class="badge hi">0% Plugins</span>
+            <span class="badge hi">Core Web Vitals</span>
+            <span class="badge">Clean Architecture</span>
+            <span class="badge">RTL / LTR Ready</span>
+            <span class="badge">Vanilla HTML · CSS · JS</span>
         </div>
-    </div>
-</section>
-</main>
+    </header>
+
+    <main>
+
+        <!-- 01 — 404 INTERFACES -->
+        <section class="category-section">
+            <div class="cat-header">
+                <span class="cat-num">01</span>
+                <span class="cat-title">404 Error Interfaces</span>
+                <span class="cat-count">3 templates</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-tag">Vanilla UI</div>
+                    <div class="card-title">Cyberpunk Glitch</div>
+                    <div class="card-desc">High-impact glitch state animations using pure CSS keyframes. Zero scripts. Fully self-contained.</div>
+                    <a href="template-404-pages/cyberpunk-glitch/" class="card-link">
+                        Launch <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="card-tag">Vanilla UI</div>
+                    <div class="card-title">Floating Astronaut</div>
+                    <div class="card-desc">Pure CSS parallax float mimicking canvas physics. No libraries. Silky 60fps on all devices.</div>
+                    <a href="template-404-pages/floating-astronaut/" class="card-link">
+                        Launch <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="card-tag">Vanilla UI</div>
+                    <div class="card-title">Noor Glow</div>
+                    <div class="card-desc">Aesthetic neon glow UI with localized structural assets. RTL-compatible layout out of the box.</div>
+                    <a href="template-404-pages/noor-glow/" class="card-link">
+                        Launch <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 — COMING SOON -->
+        <section class="category-section">
+            <div class="cat-header">
+                <span class="cat-num">02</span>
+                <span class="cat-title">Coming Soon Engines</span>
+                <span class="cat-count">3 templates</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-tag">Async JS</div>
+                    <div class="card-title">Cyberpunk Neon Glow</div>
+                    <div class="card-desc">Dynamic timing system fused with a neon glassmorphic engine. Countdown-accurate. Visually aggressive.</div>
+                    <a href="template-coming-soon-pages/cyberpunk-neon-glow/" class="card-link">
+                        Launch <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="card-tag">Async JS</div>
+                    <div class="card-title">Glassmorphism Timer</div>
+                    <div class="card-desc">Microsecond-accurate countdown module. Ultra-lightweight with layered background masking.</div>
+                    <a href="template-coming-soon-pages/glassmorphic-timer/" class="card-link">
+                        Launch <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="card-tag">Vanilla UI</div>
+                    <div class="card-title">Skyline Properties</div>
+                    <div class="card-desc">Corporate real-estate placeholder frame. Optimized async asset loading. Client-ready on day one.</div>
+                    <a href="template-coming-soon-pages/skyline-properties/" class="card-link">
+                        Launch <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 — LEAD CAPTURE -->
+        <section class="category-section">
+            <div class="cat-header">
+                <span class="cat-num">03</span>
+                <span class="cat-title">Lead Capture Systems</span>
+                <span class="cat-count">1 template</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-tag">UX Forms</div>
+                    <div class="card-title">Minimalist Float-Label</div>
+                    <div class="card-desc">High-conversion input nodes via pure CSS float-label transitions. Zero JavaScript dependency.</div>
+                    <a href="template-contact-forms/minimalist-float-label/" class="card-link">
+                        Launch <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 — MAINTENANCE -->
+        <section class="category-section">
+            <div class="cat-header">
+                <span class="cat-num">04</span>
+                <span class="cat-title">Maintenance System States</span>
+                <span class="cat-count">2 templates</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-tag">CSS Mechanics</div>
+                    <div class="card-title">Minimalist Coffee Steam</div>
+                    <div class="card-desc">Atmospheric SVG manipulation and fluid dynamic emulation. Zero libraries. Pure vanilla styling.</div>
+                    <a href="template-maintenance-pages/minimalist-coffee-steam/" class="card-link">
+                        Launch <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="card-tag">CSS Mechanics</div>
+                    <div class="card-title">Pulsing Gears</div>
+                    <div class="card-desc">Industrial rotation engines via inline CSS timing loops. Smooth, infinite, library-free.</div>
+                    <a href="template-maintenance-pages/pulsing-gears/" class="card-link">
+                        Launch <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 — RTL -->
+        <section class="category-section">
+            <div class="cat-header">
+                <span class="cat-num">05</span>
+                <span class="cat-title">RTL Architecture Engines</span>
+                <span class="cat-count">1 template</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-tag">Bi-Directional</div>
+                    <div class="card-title">Roznama Pakistan</div>
+                    <div class="card-desc">Native right-to-left layout grid for Urdu and Arabic data pipelines. Zero layout breakage. Logical properties throughout.</div>
+                    <a href="template-rtl-sites/roznama-pakistan/" class="card-link">
+                        Launch <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 06 — PRICING -->
+        <section class="category-section">
+            <div class="cat-header">
+                <span class="cat-num">06</span>
+                <span class="cat-title">Conversion Pricing Matrix</span>
+                <span class="cat-count">1 template</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-tag">Stripe Aesthetic</div>
+                    <div class="card-title">Clean Stripe v1</div>
+                    <div class="card-desc">Zero-dependency pricing grid. Core Web Vitals optimized. Custom CSS vectors — no icon fonts loaded.</div>
+                    <a href="template-pricing-tables/clean-stripe-v1/" class="card-link">
+                        Launch <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6H9.5M6.5 3L9.5 6L6.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <span class="footer-name">Dilawar Hussain</span>
+        <span class="footer-info">Fiverr: @pixbit &nbsp;·&nbsp; Clean Code &nbsp;·&nbsp; No Plugins &nbsp;·&nbsp; RTL/LTR</span>
+    </footer>
+
+</div>
 </body>
 </html>
