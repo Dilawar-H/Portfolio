@@ -1,0 +1,193 @@
+/* Zero-Dependency CSS Grid Reset & Performance variables */
+:root {
+    --bg-main: #021C1E;
+    --card-surface: #004445;
+    --accent: #2C7873;
+    --mint-text: #6FB98F;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--mint-text);
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.pricing-container {
+    max-width: 900px;
+    width: 100%;
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.pricing-header span {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.pricing-header h2 {
+    color: var(--white);
+    font-size: 2.2rem;
+    margin: 0.5rem 0 1rem;
+    letter-spacing: -0.03em;
+}
+
+.pricing-header p {
+    opacity: 0.8;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* CSS Grid for clean structural flex response */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    align-items: center;
+}
+
+.price-card {
+    background-color: var(--card-surface);
+    border: 1px solid rgba(111, 185, 143, 0.1);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.price-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+}
+
+/* Featured card scaling highlight */
+.price-card.featured {
+    border: 2px solid var(--accent);
+    box-shadow: 0 10px 30px rgba(44, 120, 115, 0.15);
+}
+
+.badge {
+    position: absolute;
+    top: -12px;
+    right: 24px;
+    background-color: var(--accent);
+    color: var(--white);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.card-lead {
+    color: var(--white);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.price-amount {
+    color: var(--white);
+    font-size: 2.75rem;
+    font-weight: 700;
+    margin: 1rem 0;
+}
+
+.price-amount span {
+    font-size: 1rem;
+    color: var(--mint-text);
+    opacity: 0.7;
+}
+
+.price-desc {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-bottom: 2rem;
+    min-height: 60px;
+}
+
+.features-list {
+    list-style: none;
+    margin-bottom: 2.5rem;
+    border-top: 1px solid rgba(111, 185, 143, 0.1);
+    padding-top: 1.5rem;
+}
+
+.features-list li {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+/* Pure CSS checkmark vectors to eliminate icon libraries */
+.features-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.features-list li.disabled {
+    opacity: 0.4;
+    text-decoration: line-through;
+}
+
+.features-list li.disabled::before {
+    content: "✕";
+    color: #ff4a4a;
+}
+
+/* Standardized CTA Action Elements */
+.cta-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    text-align: center;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.cta-btn.primary {
+    background-color: var(--accent);
+    color: var(--white);
+}
+
+.cta-btn.primary:hover {
+    background-color: #1f5854;
+}
+
+.cta-btn.secondary {
+    background-color: transparent;
+    border: 1px solid var(--accent);
+    color: var(--white);
+}
+
+.cta-btn.secondary:hover {
+    background-color: var(--accent);
+}
+
+@media (max-width: 480px) {
+    body { padding: 2rem 1rem; }
+    .price-card { padding: 2rem 1.5rem; }
+}
